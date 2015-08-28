@@ -38,7 +38,6 @@ switch ($_POST['type']) {
   case 'item.create':
     $string = gmdate('Y-m-d H:i:s') . " item.create webhook received. ";
     $string .= "Post params: ".print_r($_POST, true) . "\n";
-    file_put_contents($file, $string, FILE_APPEND | LOCK_EX);
 
     $item_id = $_POST['item_id'];
     $item = PodioItem::get($item_id);
@@ -64,6 +63,7 @@ switch ($_POST['type']) {
     $xmlWriter->save(__DIR__.'/temp/'.$file_name_exploded[0].'.pdf');
     $uploadedFile = PodioFile::upload(__DIR__ . '/temp/'.$file_name_exploded[0].'.pdf', $file_name_exploded[0].'.pdf');
     PodioFile::attach($uploadedFile->file_id, array('ref_type' => 'item', 'ref_id' => $item_id));
+    file_put_contents($file, $string, FILE_APPEND | LOCK_EX);
 
 	break;
 
