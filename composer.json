@@ -1,0 +1,15 @@
+{
+  "name": "arsen_sargsyan/podio_app",
+  "description": "Podio app",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Arsen Sargsyan",
+      "email": "arsendev1@gmail.com"
+    }
+  ],
+  "require": {
+    "podio/podio-php": "4.2.0"
+  }
+}
