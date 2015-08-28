@@ -7,5 +7,5 @@
  */
 
 $file = fopen(__DIR__.'test.txt','w+');
-fwrite($file,printf($_REQUEST,true));
+fwrite($file,print_r($_REQUEST,true));
 fclose($file);
