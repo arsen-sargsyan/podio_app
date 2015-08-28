@@ -9,12 +9,18 @@
 class Controller
 {
     public $config_errors = [];
+    public $doc_mime_list = [
+        'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+        'application/msword'
+    ];
 
     public function validate_config($source){
         $config_keys = [
             'env',
             'client_id',
-            'client_secret'
+            'client_secret',
+            'app_id',
+            'app_token',
         ];
 
         if(is_array($source)){

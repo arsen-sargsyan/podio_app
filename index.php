@@ -1,7 +1,10 @@
 <?php
+//composer autoloader
 require_once 'vendor/autoload.php';
+//load controller
 require_once 'controller.php';
 
+//config file
 $config = require_once 'config.php';
 
 
@@ -45,7 +48,7 @@ if($controller->validate_config($config)){
         } else {
             // Finalize authentication. Note that we must pass the REDIRECT_URI again.
             Podio::authenticate_with_authorization_code($_GET['code'], REDIRECT_URI);
-            print "You have been authenticated. Wee!";
+            print "You have been authenticated. Try to send an email with attached word document!";
 
         }
 
