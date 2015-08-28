@@ -10,6 +10,8 @@
     }
   ],
   "require": {
-    "podio/podio-php": "4.2.0"
+    "podio/podio-php": "4.2.0",
+    "phpoffice/phpword": "0.12.0",
+    "dompdf/dompdf": "v0.6.1"
   }
 }

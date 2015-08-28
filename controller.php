@@ -40,4 +40,16 @@ class Controller
 
         return empty($this->config_errors);
     }
+
+    public function init_podio($config){
+        Podio::setup($config['client_id'], $config['client_secret']);
+    }
+
+    public function init_pdf_renderer(){
+        define("DOMPDF_ENABLE_AUTOLOAD", false);
+        // set pdf renderer
+        $domPdfPath = realpath(__DIR__.'/vendor/dompdf/dompdf');
+        \PhpOffice\PhpWord\Settings::setPdfRendererPath($domPdfPath);
+        \PhpOffice\PhpWord\Settings::setPdfRendererName('DomPDF');
+    }
 }
