@@ -9,9 +9,9 @@
 class Controller
 {
     public $config_errors = [];
-    public $doc_mime_list = [
-        'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-        'application/msword'
+    private $doc_mime_list_reader = [
+        'application/vnd.openxmlformats-officedocument.wordprocessingml.document' => 'Word2007',
+        'application/msword' => 'MsDoc'
     ];
 
     public function validate_config($source){
@@ -42,6 +42,7 @@ class Controller
     }
 
     public function init_podio($config){
+        // Setup client
         Podio::setup($config['client_id'], $config['client_secret']);
     }
 
@@ -51,5 +52,12 @@ class Controller
         $domPdfPath = realpath(__DIR__.'/vendor/dompdf/dompdf');
         \PhpOffice\PhpWord\Settings::setPdfRendererPath($domPdfPath);
         \PhpOffice\PhpWord\Settings::setPdfRendererName('DomPDF');
+    }
+
+    public function getReaderByMime($mime){
+        if(isset($this->doc_mime_list_reader[$mime])){
+            return $this->doc_mime_list_reader[$mime];
+        }
+        return false;
     }
 }

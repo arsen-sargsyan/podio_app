@@ -21,8 +21,7 @@ if($controller->validate_config($config)){
             break;
 
     }
-
-    Podio::setup($config['client_id'], $config['client_secret']);
+    $controller->init_podio($config);
 
     if (!isset($_GET['code']) && !Podio::is_authenticated()) {
 
@@ -37,10 +36,6 @@ if($controller->validate_config($config)){
         print "You were already authenticated and no authentication is needed.";
 
     } elseif (isset($_GET['code'])) {
-
-        // User is being redirected back from podio.com after authenticating.
-        // The authorization code is available in $_GET['code']
-        // We use it to finalize the authentication
 
         // If there was a problem $_GET['error'] is set:
         if (isset($_GET['error'])) {
